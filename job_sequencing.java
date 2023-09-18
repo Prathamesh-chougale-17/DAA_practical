@@ -36,10 +36,10 @@ class job_sequencing {
     public static void main(String[] args) {
         ArrayList<job_sequencing> arr = new ArrayList<job_sequencing>();
         arr.add(new job_sequencing('a', 2, 100));
-        arr.add(new job_sequencing('b', 1, 19));
+        arr.add(new job_sequencing('b', 1, 89));
         arr.add(new job_sequencing('c', 2, 27));
         arr.add(new job_sequencing('d', 1, 25));
-        arr.add(new job_sequencing('e', 3, 105));
+        arr.add(new job_sequencing('e', 3, 15));
 
         System.out.println("Followong is maximum Profit sequence of job");
 
