@@ -20,6 +20,7 @@ class job_sequencing {
         int n = arr.size();
         Collections.sort(arr, (a, b) -> b.profit - a.profit);
         boolean result[] = new boolean[t];
+        int value = 0;
         char job[] = new char[t];
         for (int i = 0; i < n; i++) {
             for (int j = Math.min(t - 1, arr.get(i).deadline - 1); j >= 0; j--) {
@@ -34,6 +35,14 @@ class job_sequencing {
                 System.out.print(jb + " ");
             System.out.println();
         }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < job.length; j++) {
+                if (arr.get(i).id == job[j]) {
+                    value = value + arr.get(i).profit;
+                }
+            }
+        }
+        System.out.println("The total Profit of Job sequencing is : " + value);
     }
 
     public static void main(String[] args) {
