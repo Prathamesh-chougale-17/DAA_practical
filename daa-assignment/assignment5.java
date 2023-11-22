@@ -14,7 +14,7 @@ public class assignment5 {
     public static void printknightsTour(int[][] chess, int r, int c, int move) {
         if (r < 0 || c < 0 || r >= chess.length || c >= chess.length || chess[r][c] > 0) {
             return;
-        } else if (move == chess.length * chess.length) {
+        } else if (move == chess.length * chess.length - 1) {
             chess[r][c] = move;
             displayBoard(chess);
             // chess[r][c] = 0;
