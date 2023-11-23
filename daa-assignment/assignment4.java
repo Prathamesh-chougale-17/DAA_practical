@@ -1,10 +1,10 @@
 public class assignment4 {
-    static final int V = 3;
+    static final int V = 9;
 
-    int minDistance(int dist[], boolean setsep[]) {
-        int min = Integer.MAX_VALUE, min_index = -1;
+    public int minDistance(int[] dist, Boolean[] setsep) {
+        int min = Integer.MAX_VALUE, min_index = 0;
         for (int i = 0; i < V; i++) {
-            if (setsep[i] == false && dist[i] <= min) {
+            if (!setsep[i] && dist[i] <= min) {
                 min = dist[i];
                 min_index = i;
             }
@@ -12,15 +12,9 @@ public class assignment4 {
         return min_index;
     }
 
-    void printGraph(int dist[]) {
-        for (int i = 0; i < V; i++) {
-            System.out.println(i + "\t" + dist[i]);
-        }
-    }
-
-    void dijkstra(int graph[][], int src) {
+    void dijkstra(int[][] graph, int src) {
         int dist[] = new int[V];
-        boolean setsep[] = new boolean[V];
+        Boolean setsep[] = new Boolean[V];
         for (int i = 0; i < V; i++) {
             dist[i] = Integer.MAX_VALUE;
             setsep[i] = false;
@@ -35,7 +29,9 @@ public class assignment4 {
                 }
             }
         }
-        printGraph(dist);
+        for (int i = 0; i < V; i++) {
+            System.out.println(i + "\t\t" + dist[i]);
+        }
     }
 
     public static void main(String[] args) {
@@ -43,7 +39,7 @@ public class assignment4 {
                 { 0, 8, 0, 7, 0, 4, 0, 0, 2 }, { 0, 0, 7, 0, 9, 14, 0, 0, 0 }, { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
                 { 0, 0, 4, 14, 10, 0, 2, 0, 0 }, { 0, 0, 0, 0, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
                 { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-        dijsktra n = new dijsktra();
+        assignment4 n = new assignment4();
         n.dijkstra(graph, 0);
     }
 }
