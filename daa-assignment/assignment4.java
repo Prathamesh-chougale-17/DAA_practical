@@ -1,48 +1,42 @@
-//Name: Prathamesh Chougale
-//Roll No: TYCOA40
+public class assignment4 {
+    static final int V = 3;
 
-public class dijsktra {
-    static final int V = 9;
-
-    int minDistance(int dist[], Boolean sptSet[]) {
+    int minDistance(int dist[], boolean setsep[]) {
         int min = Integer.MAX_VALUE, min_index = -1;
-        for (int v = 0; v < V; v++) {
-            if (sptSet[v] == false && dist[v] <= min) {
-                min = dist[v];
-                min_index = v;
+        for (int i = 0; i < V; i++) {
+            if (setsep[i] == false && dist[i] <= min) {
+                min = dist[i];
+                min_index = i;
             }
         }
         return min_index;
     }
 
-    void printSolution(int dist[]) {
-        System.out.println("Vertex\t\t Distance from Source");
+    void printGraph(int dist[]) {
         for (int i = 0; i < V; i++) {
-            System.out.println(i + "\t\t" + dist[i]);
+            System.out.println(i + "\t" + dist[i]);
         }
     }
 
     void dijkstra(int graph[][], int src) {
         int dist[] = new int[V];
-        Boolean sptSet[] = new Boolean[V];
+        boolean setsep[] = new boolean[V];
         for (int i = 0; i < V; i++) {
             dist[i] = Integer.MAX_VALUE;
-            sptSet[i] = false;
+            setsep[i] = false;
         }
         dist[src] = 0;
-        for (int count = 0; count < V - 1; count++) {
-            int u = minDistance(dist, sptSet);
-            sptSet[u] = true;
+        for (int i = 0; i < V - 1; i++) {
+            int u = minDistance(dist, setsep);
+            setsep[u] = true;
             for (int v = 0; v < V; v++) {
-                if (!sptSet[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
+                if (!setsep[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v]) {
                     dist[v] = dist[u] + graph[u][v];
                 }
             }
         }
-        printSolution(dist);
+        printGraph(dist);
     }
-
-    int min = Integer.MAX_VALUE, min_index = -1;
 
     public static void main(String[] args) {
         int graph[][] = new int[][] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 }, { 4, 0, 18, 0, 0, 0, 0, 11, 0 },

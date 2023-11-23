@@ -8,7 +8,7 @@ public class assignment5 {
         int c = sc.nextInt();
         int[][] chess = new int[n][n];
         sc.close();
-        printknightsTour(chess, r, c, 1);
+        printknightsTour(chess, r, c, 0);
     }
 
     public static void printknightsTour(int[][] chess, int r, int c, int move) {
@@ -18,19 +18,21 @@ public class assignment5 {
             chess[r][c] = move;
             displayBoard(chess);
             // chess[r][c] = 0;
-            return;
+            System.exit(0);
         }
+        if (move < chess.length * chess.length - 1) {
 
-        chess[r][c] = move;
-        printknightsTour(chess, r - 2, c + 1, move + 1);
-        printknightsTour(chess, r - 1, c + 2, move + 1);
-        printknightsTour(chess, r + 1, c + 2, move + 1);
-        printknightsTour(chess, r + 2, c + 1, move + 1);
-        printknightsTour(chess, r + 2, c - 1, move + 1);
-        printknightsTour(chess, r + 1, c - 2, move + 1);
-        printknightsTour(chess, r - 1, c - 2, move + 1);
-        printknightsTour(chess, r - 2, c - 1, move + 1);
-        chess[r][c] = 0;
+            chess[r][c] = move;
+            printknightsTour(chess, r - 2, c + 1, move + 1);
+            printknightsTour(chess, r - 1, c + 2, move + 1);
+            printknightsTour(chess, r + 1, c + 2, move + 1);
+            printknightsTour(chess, r + 2, c + 1, move + 1);
+            printknightsTour(chess, r + 2, c - 1, move + 1);
+            printknightsTour(chess, r + 1, c - 2, move + 1);
+            printknightsTour(chess, r - 1, c - 2, move + 1);
+            printknightsTour(chess, r - 2, c - 1, move + 1);
+            chess[r][c] = 0;
+        }
     }
 
     public static void displayBoard(int[][] chess) {

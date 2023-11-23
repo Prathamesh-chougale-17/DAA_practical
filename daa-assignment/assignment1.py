@@ -1,21 +1,29 @@
-def square_large_number(n):
-    if n == 0:
-        return 0
-    elif n < 0:
-        return square_large_number(-n)
-    elif n % 2 == 0:
-        return 4 * square_large_number(n // 2)
+# Assignment-1: Karatsuba Algorithm
+# Problem: Square of 20 digit number using divide and conquer method
+# Time: O(n^1.59)
+
+
+# Function
+def karatsuba(x, y):
+    if x < 10:
+        return x * y
     else:
-        return (
-            (4 * square_large_number(n // 2)) + (4 * (n // 2)) + 1
-        )  # // is integer division and / is float division
+        n = len(str(x))
+        h = n // 2
+        p = 10**h
+        k = 10 ** (h * 2)
+        a = x // p
+        b = x % p
+        c = y // p
+        d = y % p
+        ac = karatsuba(a, c)
+        bd = karatsuba(b, d)
+        plus = karatsuba(a + b, c + d) - (ac + bd)
+        return ac * k + plus * p + bd
+        # Formula : ac*10^(2*n/2) + (ad+bc)*10^(n/2) + bd
 
 
-# Define the large number
-large_number = int(input("Enter a large number: "))
-
-# Square the large number using recursion
-result = square_large_number(large_number)
-
-# Print the result
-print(result)
+# Main
+x = input("Enter number: ")
+res = karatsuba(int(x), int(x))
+print("Square of " + str(x) + ": " + str(res))
