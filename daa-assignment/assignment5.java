@@ -21,7 +21,6 @@ public class assignment5 {
             System.exit(0);
         }
         if (move < chess.length * chess.length - 1) {
-
             chess[r][c] = move;
             printknightsTour(chess, r - 2, c + 1, move + 1);
             printknightsTour(chess, r - 1, c + 2, move + 1);
